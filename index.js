@@ -1,7 +1,13 @@
 const readlineSync = require('readline-sync');
+const chalk = require('chalk');
 
 //score
 let score = 0;
+
+//chalk styles
+const wrong = chalk.bold.red;
+const correct = chalk.bold.green;
+const info = chalk.underline.magenta;
 
 //welcome
 console.log("When you are economically smart and can handle your finances prudently, you can handle much stress easily. A personal finance quiz is good to increase learning and understanding of your finance.");
@@ -24,10 +30,10 @@ const quizFunction = (question,options,answer) => {
     score++;
   } 
   else{
-    console.log("Wrong answer");
+    console.log(wrong("Wrong answer"));
   }
   console.log(`Your answer: ${options[userAnswer-1]}`)
-  console.log(`Correct answer: ${options[answer]}`);
+  console.log(correct(`Correct answer: ${options[answer]}`));
   console.log("--------");
 }
 
@@ -92,7 +98,7 @@ for(let i=0;i<quizDatabase.length;i++){
 
 //final score & you are smart or not
 console.log(`Your final score is ${score} out of 10`);
-console.log('Toppers leaderboard')
+console.log(info('Toppers leaderboard'))
 
 for (person of toppers){
   console.log(`${person.name}: ${person.score}`)
